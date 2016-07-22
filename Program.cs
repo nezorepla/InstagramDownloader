@@ -171,7 +171,17 @@ namespace InstagramDownloader
         }
         static string rtJ(string u)
         {
-            WebClient wc = new WebClient();
+            
+             IWebProxy defaultWebProxy = WebRequest.DefaultWebProxy;
+            defaultWebProxy.Credentials = CredentialCache.DefaultCredentials;
+            WebClient wc = new WebClient
+             {
+                 Proxy = defaultWebProxy
+             };
+
+
+
+ 
             wc.Encoding = Encoding.UTF8;
             string source = "";
             try
